@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/output.css" />
+    <title>Home</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- Navbar start -->
+      <nav class="bg-white w-full fixed z-50 py-5">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div class="relative flex h-16 items-center justify-between">
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+              <!-- Mobile menu button-->
+              <button
+                type="button"
+                class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-sky-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                aria-controls="mobile-menu"
+                id="mobile-menu-button"
+                aria-expanded="false"
+              >
+                <span class="absolute -inset-0.5"></span>
+                <span class="sr-only">Open main menu</span>
+                <!--
+                Icon when menu is closed.
+    
+                Menu open: "hidden", Menu closed: "block"
+              -->
+                <svg
+                  class="block size-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  data-slot="icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
+                <!--
+                Icon when menu is open.
+    
+                Menu open: "block", Menu closed: "hidden"
+              -->
+                <svg
+                  class="hidden size-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  data-slot="icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18 18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div
+              class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+            >
+              <div class="flex shrink-0 items-center">
+                <img
+                  class="h-8 w-auto"
+                  src="/public/logo-mddana-dark.png"
+                  alt="Your Company"
+                />
+              </div>
+              <div class="hidden w-full sm:ml-6 sm:block">
+                <div class="flex justify-center space-x-4">
+                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                  <a
+                    href="#"
+                    class="rounded-full border-b-2 border-sky-400 text-sky-400 px-3 py-2 text-sm font-medium"
+                    aria-current="page"
+                    >Home
+                  </a>
+                  <a
+                    href="#project"
+                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:bg-sky-400 hover:text-white"
+                    >Investasi</a
+                  >
+                  <a
+                    href="#"
+                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:bg-sky-400 hover:text-white"
+                    >Blog</a
+                  >
+                  <a
+                    href="#"
+                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:bg-sky-400 hover:text-white"
+                    >Tentang Kami</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div>
+              <button
+                class="flex gap-1 text-white px-3 items-center bg-gradient-to-r from-sky-500 to-sky-600 p-2 rounded-lg"
+              >
+                <img
+                  src="./public/icon-login.svg"
+                  class="w-6 h-6 -scale-x-100"
+                  alt="icon-login"
+                />
+                Login/Register
+              </button>
+            </div>
+            <div
+              class="hidden absolute inset-y-0 right-0 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+            >
+              <button
+                type="button"
+                class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              >
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only">View notifications</span>
+                <svg
+                  class="size-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  data-slot="icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"
+                  />
+                </svg>
+              </button>
+
+              <!-- Profile dropdown -->
+              <div class="hidden relative ml-3">
+                <div>
+                  <button
+                    onclick="toggleProfile()"
+                    type="button"
+                    class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    id="user-menu-button"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    <span class="absolute -inset-1.5"></span>
+                    <span class="sr-only">Open user menu</span>
+                    <img
+                      class="size-8 rounded-full"
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      alt=""
+                    />
+                  </button>
+                </div>
+
+                <!--
+                Dropdown menu, show/hide based on menu state.
+    
+                Entering: "transition ease-out duration-100"
+                  From: "transform opacity-0 scale-95"
+                  To: "transform opacity-100 scale-100"
+                Leaving: "transition ease-in duration-75"
+                  From: "transform opacity-100 scale-100"
+                  To: "transform opacity-0 scale-95"
+              -->
+                <div
+                  id="dropdown-profile"
+                  class="absolute hidden right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="user-menu-button"
+                  tabindex="-1"
+                >
+                  <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    tabindex="-1"
+                    id="user-menu-item-0"
+                    >Your Profile</a
+                  >
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    tabindex="-1"
+                    id="user-menu-item-1"
+                    >Settings</a
+                  >
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700"
+                    role="menuitem"
+                    tabindex="-1"
+                    id="user-menu-item-2"
+                    >Sign out</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+          <div class="space-y-2 px-2 pb-3 pt-2">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <a
+              href="#"
+              class="block rounded-full border-b-2 border-sky-400 text-sky-400 px-3 py-2 text-sm font-medium"
+              aria-current="page"
+              >Home</a
+            >
+            <a
+              href="#project"
+              class="block rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:bg-sky-400 hover:text-white"
+              >Investasi</a
+            >
+            <a
+              href="#"
+              class="block rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:bg-sky-400 hover:text-white"
+              >Blog</a
+            >
+            <a
+              href="#"
+              class="block rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:bg-sky-400 hover:text-white"
+              >Tentang Kami</a
+            >
+          </div>
+        </div>
+      </nav>
+      <!-- Navbar end -->
+      <!-- Hero start -->
+      <div class="bg-white">
+        <div class="relative lg:flex isolate mx-5 lg:px-8">
+          <div
+            class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+            aria-hidden="true"
+          >
+            <div
+              class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-sky-200 to-sky-500 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+              style="
+                clip-path: circle(50% at 50% 50%);
+              "
+            ></div>
+          </div>
+          <div class="mx-auto lg:w-1/2 py-28 sm:py-48 lg:py-56">
+            <div>
+              <h1 class="ml-10 uppercase font-semibold text-sky-400">Meningkatkan Keuangan Kini Lebih Mudah</h1>
+              <h1
+                class="text-3xl ml-10 font-semibold tracking-tight text-gray-900 sm:text-5xl"
+              >
+                Dukung dan Angkat Produk UMKM Terbaik Bersama Kami!
+              </h1>
+              <p
+                class="mt-8 ml-10 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8"
+              >
+                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
+                lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.
+              </p>
+              <div class="mt-10 flex items-center justify-center gap-x-6">
+                <a
+                  href="#"
+                  class="rounded-md bg-sky-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >Cari Pendanaan</a
+                >
+                <a
+                  href="#"
+                  class="text-sm/6 font-semibold bg-sky-800 px-3.5 py-2 rounded-md shadow-md text-white"
+                  >Invest Sekarang<span aria-hidden="true"> →</span></a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="flex lg:w-1/2">
+            <img
+              src="/public/undraw_projections_fhch.svg"
+              class="w-[400px] mx-auto py-28"
+              alt="image-hero"
+            />
+          </div>
+          <div
+            class="absolute h-full inset-x-0 top-[calc(100%-10rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+            aria-hidden="true"
+          >
+            <div
+              class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-sky-700 to-sky-900 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+              style="
+                clip-path: polygon(
+                  74.1% 44.1%,
+                  100% 61.6%,
+                  97.5% 26.9%,
+                  85.5% 0.1%,
+                  80.7% 2%,
+                  72.5% 32.5%,
+                  60.2% 62.4%,
+                  52.4% 68.1%,
+                  47.5% 58.3%,
+                  45.2% 34.5%,
+                  27.5% 76.7%,
+                  0.1% 64.9%,
+                  17.9% 100%,
+                  27.6% 76.8%,
+                  76.1% 97.7%,
+                  74.1% 44.1%
+                );
+              "
+            ></div>
+          </div>
+        </div>
+      </div>
+      <!-- Hero end -->
+      <!-- Categories start -->
+      <div class="relative max-w-7xl mx-auto py-10">
+        <div class="text-center mb-10 space-y-5">
+          <h2 class="text-sky-400 uppercase text-xl">Explore Categories</h2>
+          <h1 class="text-4xl font-bold">
+            Periksa Kategori Mana Yang Anda Minati
+          </h1>
+          <h3 class="text-gray-500">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Voluptatibus, delectus?
+          </h3>
+        </div>
+        <div class="grid lg:grid-cols-5 gap-3 justify-items-center">
+          <a
+            href="#"
+            class="border rounded-md w-10/12 py-10 border-sky-400 text-center"
+          >
+            <img
+              src="/public/restaurant_6314337.png"
+              class="w-20 h-20 mx-auto"
+              alt="image1"
+            />
+            <h3 class="font-bold text-xl">Foods</h3>
+          </a>
+          <div
+            class="border rounded-md w-10/12 py-10 border-sky-400 text-center"
+          >
+            <img
+              src="/public/clothes_5149913.png"
+              class="w-20 h-20 mx-auto"
+              alt="image1"
+            />
+            <h3 class="font-bold text-xl">Fashion</h3>
+          </div>
+          <div
+            class="border rounded-md w-10/12 py-10 border-sky-400 text-center"
+          >
+            <img
+              src="/public/lipstick_3638292.png"
+              class="w-20 h-20 mx-auto"
+              alt="image1"
+            />
+            <h3 class="font-bold text-xl">Beauty</h3>
+          </div>
+          <div
+            class="border rounded-md w-10/12 py-10 border-sky-400 text-center"
+          >
+            <img
+              src="/public/engeneering_3964033.png"
+              class="w-20 h-20 mx-auto"
+              alt="image1"
+            />
+            <h3 class="font-bold text-xl">Otomotif</h3>
+          </div>
+          <div
+            class="border rounded-md w-10/12 py-10 border-sky-400 text-center"
+          >
+            <img
+              src="/public/gardening_9848391.png"
+              class="w-20 h-20 mx-auto"
+              alt="image1"
+            />
+            <h3 class="font-bold text-xl">Agribisnis</h3>
+          </div>
+        </div>
+      </div>
+      <!-- Categories end-->
+      <!-- project start -->
+      <div id="project" class="bg-sky-100 py-20">
+        <div class="text-center mb-10 space-y-5">
+          <h2 class="text-sky-400 uppercase text-xl">
+            BISNIS YANG DAPAT ANDA DUKUNG
+          </h2>
+          <h1 class="text-4xl font-bold">Project Unggulan Terbaik</h1>
+        </div>
+        <div class="flex space-x-4 justify-center mb-10 mx-auto">
+          <div>
+            <button class="font-semibold text-sky-600 hover:underline">
+              Makanan
+            </button>
+            <div class="w-2 h-2 rounded-full mx-auto bg-sky-400"></div>
+          </div>
+          <div>
+            <button class="font-semibold text-sky-500/50 hover:underline">
+              Fashion
+            </button>
+          </div>
+          <div>
+            <button class="font-semibold text-sky-500/50 hover:underline">
+              Beauty
+            </button>
+          </div>
+          <div>
+            <button class="font-semibold text-sky-500/50 hover:underline">
+              Otomotif
+            </button>
+          </div>
+          <div>
+            <button class="font-semibold text-sky-500/50 hover:underline">
+              Agribisnis
+            </button>
+          </div>
+        </div>
+        <div
+          class="max-w-7xl mx-auto flex items-center space-x-4 overflow-hidden relative"
+        >
+          <button
+            id="prev-btn"
+            class="absolute left-0 z-10 bg-white rounded-full shadow-md hover:bg-gray-100"
+          >
+            <img src="/public/arrow-l.svg" class="w-16 h-16" alt="arrow-l" />
+          </button>
+          <!-- Project list start -->
+          <div
+            id="carousel"
+            class="flex transition-transform ease-in-out duration-500 gap-x-2"
+          >
+            <!-- Project 1 -->
+            <div class="relative bg-white w-[400px] h-[400px] rounded-md">
+              <img
+                src="/public/2148803842.jpg"
+                class="w-full h-[200px] object-cover rounded-t-md"
+                alt="image by freepik"
+              />
+              <div
+                class="absolute w-[60px] right-[45%] flex items-center bg-white top-[40%] h-[60px] rounded-full"
+              >
+                <img
+                  src="/public/logo-mddana-dark.png"
+                  class="rounded-full"
+                  alt="image by freepik"
+                />
+              </div>
+              <div class="m-5 space-y-5">
+                <h3 class="font-bold text-xl">Delecious Foods & Beverage</h3>
+                <div class="flex justify-between">
+                  <div class="flex items-center space-x-1">
+                    <img
+                      src="/public/target.png"
+                      class="w-5 h-5"
+                      alt="icon-target"
+                    />
+                    <h4>Target - Rp.100JT</h4>
+                  </div>
+                  <div class="flex items-center space-x-1">
+                    <img
+                      src="/public/give.png"
+                      class="w-5 h-5"
+                      alt="icon-target"
+                    />
+                    <h4>Didapat - Rp.78JT</h4>
+                  </div>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-200">
+                  <div
+                    class="bg-sky-500 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                    style="width: 78%"
+                  >
+                    78%
+                  </div>
+                </div>
+                <div class="flex justify-between">
+                  <div class="flex items-center">
+                    <img
+                      src="/public/time.svg"
+                      class="w-6 h-6"
+                      alt="icon-time"
+                    />
+                    <h4>10 Hari Lagi</h4>
+                  </div>
+                  <button
+                    class="bg-sky-400 px-3 py-1 shadow-lg shadow-sky-500/70 text-white rounded-full"
+                  >
+                    Taruh Dana
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- project 1 end -->
+            <!-- Project 2 -->
+            <div class="relative bg-white w-[400px] h-[400px] rounded-md">
+              <img
+                src="/public/2148803842.jpg"
+                class="w-full h-[200px] object-cover rounded-t-md"
+                alt="image by freepik"
+              />
+              <div
+                class="absolute w-[60px] right-[45%] flex items-center bg-white top-[40%] h-[60px] rounded-full"
+              >
+                <img
+                  src="/public/logo-mddana-dark.png"
+                  class="rounded-full"
+                  alt="image by freepik"
+                />
+              </div>
+              <div class="m-5 space-y-5">
+                <h3 class="font-bold text-xl">Delecious Foods & Beverage</h3>
+                <div class="flex justify-between">
+                  <div class="flex items-center space-x-1">
+                    <img
+                      src="/public/target.png"
+                      class="w-5 h-5"
+                      alt="icon-target"
+                    />
+                    <h4>Target - Rp.100JT</h4>
+                  </div>
+                  <div class="flex items-center space-x-1">
+                    <img
+                      src="/public/give.png"
+                      class="w-5 h-5"
+                      alt="icon-target"
+                    />
+                    <h4>Didapat - Rp.78JT</h4>
+                  </div>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-200">
+                  <div
+                    class="bg-sky-500 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                    style="width: 78%"
+                  >
+                    78%
+                  </div>
+                </div>
+                <div class="flex justify-between">
+                  <div class="flex items-center">
+                    <img
+                      src="/public/time.svg"
+                      class="w-6 h-6"
+                      alt="icon-time"
+                    />
+                    <h4>10 Hari Lagi</h4>
+                  </div>
+                  <button
+                    class="bg-sky-400 px-3 py-1 shadow-lg shadow-sky-500/70 text-white rounded-full"
+                  >
+                    Taruh Dana
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- project 2 end -->
+            <!-- Project 3 -->
+            <div class="relative bg-white w-[400px] h-[400px] rounded-md">
+              <img
+                src="/public/2148803842.jpg"
+                class="w-full h-[200px] object-cover rounded-t-md"
+                alt="image by freepik"
+              />
+              <div
+                class="absolute w-[60px] right-[45%] flex items-center bg-white top-[40%] h-[60px] rounded-full"
+              >
+                <img
+                  src="/public/logo-mddana-dark.png"
+                  class="rounded-full"
+                  alt="image by freepik"
+                />
+              </div>
+              <div class="m-5 space-y-5">
+                <h3 class="font-bold text-xl">Delecious Foods & Beverage</h3>
+                <div class="flex justify-between">
+                  <div class="flex items-center space-x-1">
+                    <img
+                      src="/public/target.png"
+                      class="w-5 h-5"
+                      alt="icon-target"
+                    />
+                    <h4>Target - Rp.100JT</h4>
+                  </div>
+                  <div class="flex items-center space-x-1">
+                    <img
+                      src="/public/give.png"
+                      class="w-5 h-5"
+                      alt="icon-target"
+                    />
+                    <h4>Didapat - Rp.78JT</h4>
+                  </div>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-200">
+                  <div
+                    class="bg-sky-500 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                    style="width: 78%"
+                  >
+                    78%
+                  </div>
+                </div>
+                <div class="flex justify-between">
+                  <div class="flex items-center">
+                    <img
+                      src="/public/time.svg"
+                      class="w-6 h-6"
+                      alt="icon-time"
+                    />
+                    <h4>10 Hari Lagi</h4>
+                  </div>
+                  <button
+                    class="bg-sky-400 px-3 py-1 shadow-lg shadow-sky-500/70 text-white rounded-full"
+                  >
+                    Taruh Dana
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- project 3 end -->
+             <!-- Project 1 -->
+            <div class="relative bg-white w-[400px] h-[400px] rounded-md">
+              <img
+                src="/public/2148803842.jpg"
+                class="w-full h-[200px] object-cover rounded-t-md"
+                alt="image by freepik"
+              />
+              <div
+                class="absolute w-[60px] right-[45%] flex items-center bg-white top-[40%] h-[60px] rounded-full"
+              >
+                <img
+                  src="/public/logo-mddana-dark.png"
+                  class="rounded-full"
+                  alt="image by freepik"
+                />
+              </div>
+              <div class="m-5 space-y-5">
+                <h3 class="font-bold text-xl">Delecious Foods & Beverage</h3>
+                <div class="flex justify-between">
+                  <div class="flex items-center space-x-1">
+                    <img
+                      src="/public/target.png"
+                      class="w-5 h-5"
+                      alt="icon-target"
+                    />
+                    <h4>Target - Rp.100JT</h4>
+                  </div>
+                  <div class="flex items-center space-x-1">
+                    <img
+                      src="/public/give.png"
+                      class="w-5 h-5"
+                      alt="icon-target"
+                    />
+                    <h4>Didapat - Rp.78JT</h4>
+                  </div>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-200">
+                  <div
+                    class="bg-sky-500 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                    style="width: 78%"
+                  >
+                    78%
+                  </div>
+                </div>
+                <div class="flex justify-between">
+                  <div class="flex items-center">
+                    <img
+                      src="/public/time.svg"
+                      class="w-6 h-6"
+                      alt="icon-time"
+                    />
+                    <h4>10 Hari Lagi</h4>
+                  </div>
+                  <button
+                    class="bg-sky-400 px-3 py-1 shadow-lg shadow-sky-500/70 text-white rounded-full"
+                  >
+                    Taruh Dana
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- project 1 end -->
+            <!-- Project 2 -->
+            <div class="relative bg-white w-[400px] h-[400px] rounded-md">
+              <img
+                src="/public/2148803842.jpg"
+                class="w-full h-[200px] object-cover rounded-t-md"
+                alt="image by freepik"
+              />
+              <div
+                class="absolute w-[60px] right-[45%] flex items-center bg-white top-[40%] h-[60px] rounded-full"
+              >
+                <img
+                  src="/public/logo-mddana-dark.png"
+                  class="rounded-full"
+                  alt="image by freepik"
+                />
+              </div>
+              <div class="m-5 space-y-5">
+                <h3 class="font-bold text-xl">Delecious Foods & Beverage</h3>
+                <div class="flex justify-between">
+                  <div class="flex items-center space-x-1">
+                    <img
+                      src="/public/target.png"
+                      class="w-5 h-5"
+                      alt="icon-target"
+                    />
+                    <h4>Target - Rp.100JT</h4>
+                  </div>
+                  <div class="flex items-center space-x-1">
+                    <img
+                      src="/public/give.png"
+                      class="w-5 h-5"
+                      alt="icon-target"
+                    />
+                    <h4>Didapat - Rp.78JT</h4>
+                  </div>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-200">
+                  <div
+                    class="bg-sky-500 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                    style="width: 78%"
+                  >
+                    78%
+                  </div>
+                </div>
+                <div class="flex justify-between">
+                  <div class="flex items-center">
+                    <img
+                      src="/public/time.svg"
+                      class="w-6 h-6"
+                      alt="icon-time"
+                    />
+                    <h4>10 Hari Lagi</h4>
+                  </div>
+                  <button
+                    class="bg-sky-400 px-3 py-1 shadow-lg shadow-sky-500/70 text-white rounded-full"
+                  >
+                    Taruh Dana
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- project 2 end -->
+            <!-- Project 3 -->
+            <div class="relative bg-white w-[400px] h-[400px] rounded-md">
+              <img
+                src="/public/2148803842.jpg"
+                class="w-full h-[200px] object-cover rounded-t-md"
+                alt="image by freepik"
+              />
+              <div
+                class="absolute w-[60px] right-[45%] flex items-center bg-white top-[40%] h-[60px] rounded-full"
+              >
+                <img
+                  src="/public/logo-mddana-dark.png"
+                  class="rounded-full"
+                  alt="image by freepik"
+                />
+              </div>
+              <div class="m-5 space-y-5">
+                <h3 class="font-bold text-xl">Delecious Foods & Beverage</h3>
+                <div class="flex justify-between">
+                  <div class="flex items-center space-x-1">
+                    <img
+                      src="/public/target.png"
+                      class="w-5 h-5"
+                      alt="icon-target"
+                    />
+                    <h4>Target - Rp.100JT</h4>
+                  </div>
+                  <div class="flex items-center space-x-1">
+                    <img
+                      src="/public/give.png"
+                      class="w-5 h-5"
+                      alt="icon-target"
+                    />
+                    <h4>Didapat - Rp.78JT</h4>
+                  </div>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-200">
+                  <div
+                    class="bg-sky-500 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                    style="width: 78%"
+                  >
+                    78%
+                  </div>
+                </div>
+                <div class="flex justify-between">
+                  <div class="flex items-center">
+                    <img
+                      src="/public/time.svg"
+                      class="w-6 h-6"
+                      alt="icon-time"
+                    />
+                    <h4>10 Hari Lagi</h4>
+                  </div>
+                  <button
+                    class="bg-sky-400 px-3 py-1 shadow-lg shadow-sky-500/70 text-white rounded-full"
+                  >
+                    Taruh Dana
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- project 3 end -->
+          </div>
+          <!-- Project list end -->
+          <button
+            id="next-btn"
+            class="absolute right-0 z-10 p bg-white rounded-full shadow-md hover:bg-gray-100"
+          >
+            <img src="/public/arrow-r.svg" class="w-16 h-16" alt="arrow-r" />
+          </button>
+        </div>
+      </div>
+      <!-- project end -->
+      <div class="bg-white my-20">
+        <div class="lg:flex lg:flex-row gap-x-5 max-w-7xl mx-auto">
+          <div class="lg:w-1/2 mx-5">
+            <h1 class="text-sky-400 uppercase text-xl">Ready To Go</h1>
+            <h1 class="text-4xl font-bold mb-1">Kenapa Harus Pilih <br> Udana?</h1>
+            <p class="text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate maiores aliquid quaerat eum saepe perspiciatis aliquam quae error beatae dolorum.</p>
+            <div class="space-y-2 my-10">
+              <div class="flex space-x-2 items-center">
+                <div class="bg-sky-100 p-5 rounded-full ">
+                  <img src="/public/icons8-trophy-65.png" class="lg:w-24 lg:h-20" alt="image">
+                </div>
+                <div class="flex-col">
+                  <h2 class="lg:text-3xl text-xl font-bold">Higest Success Rate</h2>
+                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur, quaerat?</p>
+                </div>
+              </div>
+              <div class="flex space-x-2 items-center">
+                <div class="bg-sky-100 p-5 rounded-full">
+                  <img src="/public/icons8-analytics-50.png" class="lg:w-24 lg:h-20" alt="image">
+                </div>
+                <div class="flex-col">
+                  <h2 class="lg:text-3xl text-xl font-bold">Milion In Founding</h2>
+                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur, quaerat?</p>
+                </div>
+              </div>
+            </div>
+            <button class="bg-sky-400 p-2 rounded-full shadow-lg shadow-sky-500/70 my-10 text-white">Temukan Lebih Banyak -></button>
+          </div>
+          <div class="flex gap-x-3 lg:w-1/2 mx-5">
+            <div class="w-1/2 h-full lg:relative">
+              <img src="public/2148419656.jpg" class="lg:absolute top-0 h-[400px] rounded-lg" alt="by freepik">
+            </div>
+            <div class="w-1/2 h-full lg:relative">
+              <img src="public/2149035670.jpg" class="lg:absolute bottom-0 h-[400px] rounded-lg" alt="by freepik">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer start -->
+      <footer class="bg-sky-100">
+        <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+          <div class="md:flex md:justify-between">
+            <div class="mb-6 md:mb-0">
+              <a href="https://flowbite.com/" class="flex items-center">
+                <img
+                  src="public/logo-mddana-dark.png"
+                  class="h-8 me-3"
+                  alt="FlowBite Logo"
+                />
+                <!-- <span class="self-center text-2xl font-semibold whitespace-nowrap">Udana</span> -->
+              </a>
+            </div>
+            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+              <div>
+                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">
+                  Company
+                </h2>
+                <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                  <li class="mb-4">
+                    <a href="#" class="hover:underline"
+                      >Tentang Kami</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline"
+                      >Kontak Kami</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">
+                  Fundraising
+                </h2>
+                <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                  <li class="mb-4">
+                    <a
+                      href="https://github.com/themesberg/flowbite"
+                      class="hover:underline"
+                      >Education</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://discord.gg/4eeurUVvTy"
+                      class="hover:underline"
+                      >Foods</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">
+                  Legal
+                </h2>
+                <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                  <li class="mb-4">
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline"
+                      >Terms &amp; Conditions</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <hr
+            class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
+          />
+          <div class="sm:flex sm:items-center sm:justify-between">
+            <span
+              class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
+              >© 2024 Udana All Rights Reserved.
+            </span>
+            <div class="flex mt-4 sm:justify-center sm:mt-0">
+              <a
+                href="#"
+                class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              >
+                <svg
+                  class="w-4 h-4"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 8 19"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <span class="sr-only">Facebook page</span>
+              </a>
+              <a
+                href="#"
+                class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+              >
+                <svg
+                  class="w-4 h-4"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 21 16"
+                >
+                  <path
+                    d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"
+                  />
+                </svg>
+                <span class="sr-only">Discord community</span>
+              </a>
+              <a
+                href="#"
+                class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+              >
+                <svg
+                  class="w-4 h-4"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 17"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <span class="sr-only">Twitter page</span>
+              </a>  
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- Footer end -->
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
